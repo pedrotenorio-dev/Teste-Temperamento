@@ -1,0 +1,90 @@
+<!-- ========== PESSOA 1: HTML - CABEÇALHO DO DOCUMENTO E TELA INICIAL ========== -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Os Quatro Temperamentos</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section id="tela-inicio" class="tela">
+
+            <header class="cabecalho">
+                <p class="selo">Teste recreativo de autoconhecimento</p>
+                <h1>Os Quatro Temperamentos</h1>
+                <p class="subtitulo">
+                    Há séculos, a tradição popular descreve quatro grandes jeitos de ser.
+                    Responda às perguntas com sinceridade e descubra com qual deles você mais se parece.
+                </p>
+            </header>
+
+            <div class="grade-cartoes">
+                <article class="cartao-temp colerico">
+                    <img src="img/colerico.jpg" alt="Homem de braços cruzados representando o temperamento colérico" />
+                    <h3>Colérico</h3>
+                    <p>Determinado, líder e focado em resultados.</p>
+                </article>
+
+                <article class="cartao-temp sanguineo">
+                    <img src="img/sanguineo.jpg" alt="Homem sorrindo representando o temperamento sanguíneo" />
+                    <h3>Sanguíneo</h3>
+                    <p>Comunicativo, alegre e cheio de entusiasmo.</p>
+                </article>
+
+                <article class="cartao-temp melancolico">
+                    <img src="img/melancolico.jpg" alt="Mulher pensativa representando o temperamento melancólico" />
+                    <h3>Melancólico</h3>
+                    <p>Analítico, sensível e perfeccionista.</p>
+                </article>
+
+                <article class="cartao-temp fleumatico">
+                    <img src="img/fleumatico.jpg" alt="Mulher tranquila representando o temperamento fleumático" />
+                    <h3>Fleumático</h3>
+                    <p>Calmo, paciente e conciliador.</p>
+                </article>
+            </div>
+
+            <p class="aviso">
+                ⚠️ Este teste é apenas uma brincadeira de autoconhecimento. Ele <strong>não</strong> é
+                um diagnóstico nem uma avaliação psicológica científica.
+            </p>
+
+            <form id="form-inicio" class="form-inicio">
+                <fieldset>
+                    <legend>Antes de começar</legend>
+
+                    <div class="campo">
+                        <label for="nome">Seu nome</label>
+                        <input type="text" id="nome" name="nome" maxlength="30" placeholder="Como devemos te chamar?" />
+                        <small id="erro-nome" class="erro-campo"></small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="faixa">Faixa etária</label>
+                        <select id="faixa" name="faixa">
+                            <option value="">Selecione...</option>
+                            <option value="ate17">Até 17 anos</option>
+                            <option value="18a29">18 a 29 anos</option>
+                            <option value="30a49">30 a 49 anos</option>
+                            <option value="50mais">50 anos ou mais</option>
+                        </select>
+                        <small id="erro-faixa" class="erro-campo"></small>
+                    </div>
+
+                    <div class="campo-check">
+                        <input type="checkbox" id="aceite" name="aceite" />
+                        <label for="aceite">Entendo que este teste é recreativo e não é um diagnóstico.</label>
+                        <small id="erro-aceite" class="erro-campo"></small>
+                    </div>
+                </fieldset>
+
+                <button id="btn-iniciar" class="btn btn-principal" type="button">Iniciar o teste</button>
+            </form>
+        </section>
