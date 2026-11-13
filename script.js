@@ -1,4 +1,4 @@
-/* ========== PESSOA 4: JS - INICIALIZAÇÃO, VALIDAÇÃO DO FORMULÁRIO E PERGUNTAS ========== */
+/* ========== Julia: JS - INICIALIZAÇÃO, VALIDAÇÃO DO FORMULÁRIO E PERGUNTAS ========== */
 
 "use strict";
 
