@@ -1,0 +1,336 @@
+/* ========== WADLEY : CSS - TODO O ESTILO DA PÁGINA ========== */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: 16px;
+  color: #2b2a33;
+  background-color: #f7f2ea;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.tela {
+  display: none;
+}
+
+#tela-inicio {
+  display: block;
+}
+
+.cabecalho {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.selo {
+  display: inline;
+  background-color: #3b3355;
+  color: #ffffff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+h1 {
+  color: #3b3355;
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #3b3355;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  margin: 0;
+  color: #6b6878;
+  font-size: 18px;
+}
+
+.grade-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-gap: 20px;
+  margin-bottom: 30px;
+}
+
+.cartao-temp {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cartao-temp:hover {
+  transform: translateY(-6px);
+}
+
+.cartao-temp img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.cartao-temp h3 {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.cartao-temp p {
+  margin: 0;
+  font-size: 15px;
+  color: #6b6878;
+}
+
+.aviso {
+  background-color: #ffffff;
+  border: 2px solid #3b3355;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #6b6878;
+}
+
+.rodape {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #6b6878;
+}
+
+.btn {
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: 2px solid #3b3355;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-principal {
+  background-color: #3b3355;
+  color: #ffffff;
+}
+
+.btn-secundario {
+  background-color: #ffffff;
+  color: #3b3355;
+}
+
+#btn-iniciar,
+#btn-refazer {
+  display: block;
+  margin: 0 auto;
+}
+
+.form-inicio {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.form-inicio fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form-inicio legend {
+  font-size: 20px;
+  color: #3b3355;
+  margin-bottom: 12px;
+}
+
+.campo {
+  display: grid;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  color: #3b3355;
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo select {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #e6e1ee;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.campo-check {
+  margin-bottom: 20px;
+  color: #6b6878;
+}
+
+.erro-campo {
+  display: block;
+  margin-top: 6px;
+  color: #b42318;
+  font-size: 14px;
+}
+
+.cartao-pergunta {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#texto-progresso {
+  margin-top: 0;
+  color: #6b6878;
+}
+
+.cartao-pergunta fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cartao-pergunta legend {
+  font-size: 24px;
+  color: #3b3355;
+  margin-bottom: 20px;
+}
+
+.lista-alternativas {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 12px;
+}
+
+.alternativa {
+  display: block;
+  padding: 14px 18px;
+  border: 2px solid #e6e1ee;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.alternativa:hover {
+  border: 2px solid #3b3355;
+  background-color: #f0ecf8;
+}
+
+.alternativa input {
+  margin-right: 10px;
+}
+
+.erro {
+  display: none;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background-color: #fde8e8;
+  color: #b42318;
+  border-radius: 8px;
+}
+
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+
+.grade-resultado {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 480px));
+  grid-gap: 24px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.cartao-resultado {
+  display: none;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cartao-resultado img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.cartao-resultado h3 {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.pontos {
+  text-align: center;
+  color: #6b6878;
+  margin-top: 0;
+}
+
+.cartao-resultado h4 {
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.cartao-resultado ul {
+  margin: 0;
+}
+
+.grade-cartoes .colerico,
+.grade-resultado .colerico {
+  border: 3px solid #d6452b;
+}
+
+.colerico h3,
+.colerico h4 {
+  color: #d6452b;
+}
+
+.grade-cartoes .sanguineo,
+.grade-resultado .sanguineo {
+  border: 3px solid #eca400;
+}
+
+.sanguineo h3,
+.sanguineo h4 {
+  color: #eca400;
+}
+
+.grade-cartoes .melancolico,
+.grade-resultado .melancolico {
+  border: 3px solid #4a5cc4;
+}
+
+.melancolico h3,
+.melancolico h4 {
+  color: #4a5cc4;
+}
+
+.grade-cartoes .fleumatico,
+.grade-resultado .fleumatico {
+  border: 3px solid #2f9a76;
+}
+
+.fleumatico h3,
+.fleumatico h4 {
+  color: #2f9a76;
+}
+
