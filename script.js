@@ -218,21 +218,22 @@ function mostrarPergunta() {
 /* ========== Victor: JS - NAVEGAÇÃO, CÁLCULO DOS PONTOS E RESULTADO ========== */
 
 function avancar() {
-  let escolhida = "";
+  let respostaEscolhida = "";
   let opcoes = document.querySelectorAll("#alternativas input");
 
   for (let opcao of opcoes) {
     if (opcao.checked) {
-      escolhida = opcao.value;
+      respostaEscolhida = opcao.value;
+      break;
     }
   }
 
-  if (escolhida == "") {
+  if (respostaEscolhida == "") {
     document.querySelector("#mensagem-erro").style.display = "block";
     return;
   }
 
-  respostas[indice] = escolhida;
+  respostas[indice] = respostaEscolhida;
 
   if (indice == PERGUNTAS.length - 1) {
     mostrarResultado();
@@ -243,8 +244,10 @@ function avancar() {
 }
 
 function voltar() {
-  indice--;
-  mostrarPergunta();
+  if (indice > 0) {
+    indice--;
+    mostrarPergunta();
+  }
 }
 
 function calcularPontos() {
@@ -253,8 +256,8 @@ function calcularPontos() {
   let melancolico = 0;
   let fleumatico = 0;
 
-  for (let tipo of respostas) {
-    switch (tipo) {
+  for (let resposta of respostas) {
+    switch (resposta) {
       case "colerico":
         colerico++;
         break;
@@ -280,19 +283,18 @@ function calcularPontos() {
 
 function mostrarResultado() {
   let resultado = calcularPontos();
-
-  let maior = 0;
+  let maiorPontuacao = 0;
 
   for (let item of resultado) {
-    if (item.pontos > maior) {
-      maior = item.pontos;
+    if (item.pontos > maiorPontuacao) {
+      maiorPontuacao = item.pontos;
     }
   }
 
   let vencedores = 0;
 
   for (let item of resultado) {
-    if (item.pontos == maior) {
+    if (item.pontos == maiorPontuacao) {
       document.querySelector("#resultado-" + item.tipo).style.display = "block";
       document.querySelector("#pontos-" + item.tipo).innerHTML = `${item.pontos} de ${PERGUNTAS.length} respostas`;
       vencedores++;
@@ -311,5 +313,7 @@ function mostrarResultado() {
 }
 
 function refazerTeste() {
+  indice = 0;
+  respostas = [];
   mostrarTela("tela-inicio");
 }
