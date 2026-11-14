@@ -33,7 +33,7 @@ function validarNome() {
   let campo = document.querySelector("#nome");
   let erro = document.querySelector("#erro-nome");
 
-  if (campo.value.length < 2) {
+  if (campo.value.trim().length < 2) {
     erro.innerHTML = "Digite um nome com pelo menos 2 letras.";
     campo.style.border = "2px solid #b42318";
     return false;
@@ -152,3 +152,164 @@ const PERGUNTAS = [
     ]
   },
   {
+    texto: "Ao conhecer pessoas novas, você...",
+    opcoes: [
+      { texto: "Puxa conversa e faz amizade rapidamente", tipo: "sanguineo" },
+      { texto: "Vai direto ao assunto", tipo: "colerico" },
+      { texto: "Escuta mais do que fala e é bem receptivo(a)", tipo: "fleumatico" },
+      { texto: "Observa primeiro e se abre aos poucos", tipo: "melancolico" }
+    ]
+  },
+  {
+    texto: "O que mais te incomoda?",
+    opcoes: [
+      { texto: "Bagunça e trabalho mal feito", tipo: "melancolico" },
+      { texto: "Rotina monótona e ficar sozinho(a)", tipo: "sanguineo" },
+      { texto: "Lentidão e falta de resultados", tipo: "colerico" },
+      { texto: "Pressão e mudanças bruscas", tipo: "fleumatico" }
+    ]
+  },
+  {
+    texto: "Ao tomar uma decisão importante, você...",
+    opcoes: [
+      { texto: "Prefere pedir opiniões e não ter pressa", tipo: "fleumatico" },
+      { texto: "Decide rápido, de olho no objetivo", tipo: "colerico" },
+      { texto: "Segue a empolgação e a intuição", tipo: "sanguineo" },
+      { texto: "Pesa prós e contras por bastante tempo", tipo: "melancolico" }
+    ]
+  }
+];
+
+function mostrarPergunta() {
+  let pergunta = PERGUNTAS[indice];
+
+  document.querySelector("#texto-progresso").innerHTML = `Pergunta ${indice + 1} de ${PERGUNTAS.length}`;
+  document.querySelector("#enunciado").innerHTML = pergunta.texto;
+
+  let html = "";
+  for (let opcao of pergunta.opcoes) {
+    let marcado = "";
+    if (respostas[indice] == opcao.tipo) {
+      marcado = "checked";
+    }
+
+    html += `<label class="alternativa">
+               <input type="radio" name="alternativa" value="${opcao.tipo}" ${marcado} />
+               ${opcao.texto}
+             </label>`;
+  }
+  document.querySelector("#alternativas").innerHTML = html;
+
+  document.querySelector("#mensagem-erro").style.display = "none";
+
+  if (indice == 0) {
+    document.querySelector("#btn-voltar").style.visibility = "hidden";
+  } else {
+    document.querySelector("#btn-voltar").style.visibility = "visible";
+  }
+
+  if (indice == PERGUNTAS.length - 1) {
+    document.querySelector("#btn-avancar").innerHTML = "Ver resultado";
+  } else {
+    document.querySelector("#btn-avancar").innerHTML = "Próxima →";
+  }
+}
+
+/* ========== Victor: JS - NAVEGAÇÃO, CÁLCULO DOS PONTOS E RESULTADO ========== */
+
+function avancar() {
+  let escolhida = "";
+  let opcoes = document.querySelectorAll("#alternativas input");
+
+  for (let opcao of opcoes) {
+    if (opcao.checked) {
+      escolhida = opcao.value;
+    }
+  }
+
+  if (escolhida == "") {
+    document.querySelector("#mensagem-erro").style.display = "block";
+    return;
+  }
+
+  respostas[indice] = escolhida;
+
+  if (indice == PERGUNTAS.length - 1) {
+    mostrarResultado();
+  } else {
+    indice++;
+    mostrarPergunta();
+  }
+}
+
+function voltar() {
+  indice--;
+  mostrarPergunta();
+}
+
+function calcularPontos() {
+  let colerico = 0;
+  let sanguineo = 0;
+  let melancolico = 0;
+  let fleumatico = 0;
+
+  for (let tipo of respostas) {
+    switch (tipo) {
+      case "colerico":
+        colerico++;
+        break;
+      case "sanguineo":
+        sanguineo++;
+        break;
+      case "melancolico":
+        melancolico++;
+        break;
+      case "fleumatico":
+        fleumatico++;
+        break;
+    }
+  }
+
+  return [
+    { tipo: "colerico", pontos: colerico },
+    { tipo: "sanguineo", pontos: sanguineo },
+    { tipo: "melancolico", pontos: melancolico },
+    { tipo: "fleumatico", pontos: fleumatico }
+  ];
+}
+
+function mostrarResultado() {
+  let resultado = calcularPontos();
+
+  let maior = 0;
+
+  for (let item of resultado) {
+    if (item.pontos > maior) {
+      maior = item.pontos;
+    }
+  }
+
+  let vencedores = 0;
+
+  for (let item of resultado) {
+    if (item.pontos == maior) {
+      document.querySelector("#resultado-" + item.tipo).style.display = "block";
+      document.querySelector("#pontos-" + item.tipo).innerHTML = `${item.pontos} de ${PERGUNTAS.length} respostas`;
+      vencedores++;
+    } else {
+      document.querySelector("#resultado-" + item.tipo).style.display = "none";
+    }
+  }
+
+  if (vencedores > 1) {
+    document.querySelector("#titulo-resultado").innerHTML = `${nome}, você tem ${vencedores} temperamentos em destaque`;
+  } else {
+    document.querySelector("#titulo-resultado").innerHTML = `${nome}, seu temperamento predominante é:`;
+  }
+
+  mostrarTela("tela-resultado");
+}
+
+function refazerTeste() {
+  mostrarTela("tela-inicio");
+}
